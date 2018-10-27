@@ -1,10 +1,9 @@
 import java.awt.*;
 
-public class CommentBox extends UMLRectangle {
-
+public class UMLRectangle extends Rectangle {
     private String mName;
 
-    public CommentBox() {
+    public UMLRectangle() {
         super();
     }
 

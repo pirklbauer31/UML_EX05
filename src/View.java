@@ -9,6 +9,10 @@ public class View implements DataObserver {
      */
     private DrawingPanel mPanel = new DrawingPanel();
 
+
+
+    private JTextField mNameElementTextField = new JTextField();
+
     public View (Controller _controller) {
         JFrame mFrame = new JFrame();
         mFrame.setSize(1000,800);
@@ -23,13 +27,23 @@ public class View implements DataObserver {
 
         JButton mDrawCommentBoxButton = new JButton();
         mDrawCommentBoxButton.setText("Comment");
-        mDrawCommentBoxButton.setText("comment");
+        mDrawCommentBoxButton.setActionCommand("comment");
         mDrawCommentBoxButton.addActionListener(_controller);
 
         JButton mDrawConnectionButton = new JButton();
         mDrawConnectionButton.setText("Line");
         mDrawConnectionButton.setActionCommand("c");
         mDrawConnectionButton.addActionListener(_controller);
+
+        JButton mNameElementButton = new JButton();
+        mNameElementButton.setText("Name");
+        mNameElementButton.setActionCommand("name");
+        mNameElementButton.addActionListener(_controller);
+
+        JTextField nameTextField = new JTextField("Test", 12);
+        setmNameElementTextField(nameTextField);
+      //  mNameElementTextField.setText("Test");
+      //  mNameElementTextField.addActionListener(_controller);
 
         mPanel.setBackground(Color.white);
         mPanel.addComponentListener(_controller);
@@ -45,6 +59,8 @@ public class View implements DataObserver {
         actionPanel.add(mDrawRectButton);
         actionPanel.add(mDrawCommentBoxButton);
         actionPanel.add(mDrawConnectionButton);
+        actionPanel.add(mNameElementButton);
+        actionPanel.add(mNameElementTextField);
 
         mFrame.setVisible(true);
     }
@@ -62,4 +78,13 @@ public class View implements DataObserver {
     public void setmPanel(DrawingPanel _mPanel) {
         this.mPanel = mPanel;
     }
+
+    public JTextField getmNameElementTextField() {
+        return mNameElementTextField;
+    }
+
+    public void setmNameElementTextField(JTextField mNameElementTextField) {
+        this.mNameElementTextField = mNameElementTextField;
+    }
+
 }

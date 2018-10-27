@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Controller implements ActionListener, MouseListener, ComponentListener {
 
     public enum SupportedActions {
-        rectangle, connection, comment
+        rectangle, connection, comment, name
     }
 
     private Model mModel;
@@ -37,6 +37,10 @@ public class Controller implements ActionListener, MouseListener, ComponentListe
                 mModel.setMouseEvent(false);
                 mCurrentAction = SupportedActions.connection;
             } break;
+            case "name" : {
+                mModel.setMouseEvent(false);
+                mCurrentAction = SupportedActions.name;
+            } break;
         }
 
 
@@ -66,6 +70,10 @@ public class Controller implements ActionListener, MouseListener, ComponentListe
             } break;
             case connection: {
                 mModel.checkPosition(_e.getX(), _e.getY());
+            } break;
+            case name: {
+                String elementName = mModel.getmObservers().get(0).getmNameElementTextField().getText();
+                mModel.generateNameTag(_e.getX(), _e.getY(), elementName);
             } break;
         }
 
